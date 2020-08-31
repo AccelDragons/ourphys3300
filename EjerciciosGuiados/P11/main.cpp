@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 
+//Agregamos la librería ctime para generar distintos "seeds" para rand().
+#include <ctime>
+
 // Librerías para manejar el tiempo. 
 #include <chrono>
 #include <thread>
@@ -20,6 +23,9 @@ using namespace std::chrono;
 */
 int main()
 {
+
+	//Usamos srand() para generar un "seed" distinto siempre. 
+	srand(time(0));
 
 	// Iniciamos declarando en número máximo de espacios que tiene el inventario del jugador. 
 	const int inventorySpaceMax = 4;
