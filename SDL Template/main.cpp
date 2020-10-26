@@ -3,11 +3,11 @@
 int main(int argc, char* args[])
 {
 	const int FPS = 60;
-	const int frameDelay = 1000 / FPS;
+	const float frameDelay = 1000 / FPS;
 
 	Uint32 frameStart;
 	Uint32 frameEnd;
-	int frameTime;
+	float frameTime;
 
 	Simulation* simulation = nullptr;
 	simulation = new Simulation();
