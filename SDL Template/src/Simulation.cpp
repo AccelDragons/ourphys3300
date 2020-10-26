@@ -1,8 +1,8 @@
 #include "Simulation.h"
 
 SDL_Texture* backgroundTex;
-SDL_Texture* robotTex; 
-SDL_Rect robotDestR; 
+SDL_Texture* robotTex;
+SDL_Rect robotDestR;
 
 Simulation::Simulation()
 {}
@@ -49,7 +49,7 @@ void Simulation::init(const char* title, int xpos, int ypos, int width, int heig
 	SDL_Surface* robotTmpSurface = IMG_Load("assets/chibi-robot.png");
 	robotTex = SDL_CreateTextureFromSurface(renderer, robotTmpSurface);
 	SDL_FreeSurface(robotTmpSurface);
-
+	
 }
 
 void Simulation::handleEvents()
