@@ -1,8 +1,9 @@
 #include "Simulation.h"
+#include "TextureManager.h"
+#include "GameObject.h"
 
-SDL_Texture* backgroundTex;
-SDL_Texture* robotTex;
-SDL_Rect robotDestR;
+GameObject* background;
+GameObject* robot;
 
 Simulation::Simulation()
 {}
@@ -42,13 +43,8 @@ void Simulation::init(const char* title, int xpos, int ypos, int width, int heig
 		isRunning = false;
 	}
 
-	SDL_Surface* backgroundTmpSurface = IMG_Load("assets/blue.png");
-	backgroundTex = SDL_CreateTextureFromSurface(renderer, backgroundTmpSurface);
-	SDL_FreeSurface(backgroundTmpSurface);
-
-	SDL_Surface* robotTmpSurface = IMG_Load("assets/chibi-robot.png");
-	robotTex = SDL_CreateTextureFromSurface(renderer, robotTmpSurface);
-	SDL_FreeSurface(robotTmpSurface);
+	background = new GameObject("assets/blue.png", renderer);
+	robot = new GameObject("assets/chibi-robot.png", renderer);
 	
 }
 
@@ -69,19 +65,15 @@ void Simulation::handleEvents()
 
 void Simulation::update()
 {
-	count += 2;
-	robotDestR.h = 64;
-	robotDestR.w = 64;
-	robotDestR.x = count;
-	robotDestR.y = count;
-	std::cout << count << std::endl;
+	robot->update(count,count,64,64);
+	count++;
 }
 
 void Simulation::render()
 {
 	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, backgroundTex, NULL, NULL);
-	SDL_RenderCopy(renderer, robotTex, NULL, &robotDestR);
+	background->render(true);
+	robot->render();
 	SDL_RenderPresent(renderer);
 }
 
