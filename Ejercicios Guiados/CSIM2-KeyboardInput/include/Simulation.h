@@ -24,6 +24,8 @@ public:
 	hWorld world;
 	hBody shipBody;
 
+	float movingSpeed = 20.0f;
+
 private:
 	bool isRunning;
 	int count = 0;

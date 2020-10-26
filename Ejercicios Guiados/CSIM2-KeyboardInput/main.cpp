@@ -31,6 +31,10 @@ int main(int argc, char* args[])
 		{
 			SDL_Delay(frameDelay - frameTime);
 		}
+
+		frameEnd = SDL_GetTicks();
+		frameTime = frameEnd - frameStart;
+		simulation->world.Step(frameTime/1000);
 	}
 
 	simulation->clean();

@@ -55,8 +55,48 @@ void Simulation::init(const char* title, int xpos, int ypos, int width, int heig
 
 void Simulation::handleEvents()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
+
+	if (event.type == SDL_KEYDOWN) {
+		switch (event.key.keysym.sym) {
+			case SDLK_w:
+				shipBody.velocity += vec2D(0.0f, -movingSpeed);
+				std::cout << "W pressed!" << std::endl;
+				break;
+
+			case SDLK_a:
+				shipBody.velocity += vec2D(-movingSpeed, 0.0f);
+				break;
+
+			case SDLK_s:
+				shipBody.velocity += vec2D(0.0f, movingSpeed);
+				break;
+
+			case SDLK_d:
+				shipBody.velocity += vec2D(movingSpeed, 0.0f);
+				break;
+		}
+	}
+	else if (event.type == SDL_KEYUP) {
+		switch (event.key.keysym.sym) {
+		case SDLK_w:
+			shipBody.velocity -= vec2D(0.0f, -movingSpeed);
+			std::cout << "W released!" << std::endl;
+			break;
+
+		case SDLK_a:
+			shipBody.velocity -= vec2D(-movingSpeed, 0.0f);
+			break;
+
+		case SDLK_s:
+			shipBody.velocity -= vec2D(0.0f, movingSpeed);
+			break;
+
+		case SDLK_d:
+			shipBody.velocity -= vec2D(movingSpeed, 0.0f);
+			break;
+		}
+	}
 
 	switch (event.type) {
 	case SDL_QUIT:
@@ -70,7 +110,7 @@ void Simulation::handleEvents()
 
 void Simulation::update()
 {
-	ship->update(shipBody.position.x, shipBody.position.y, 64, 64);
+	ship->update(shipBody.position.x, shipBody.position.y, 32, 32);
 }
 
 void Simulation::render()
