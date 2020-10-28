@@ -21,10 +21,17 @@ public:
 
 	static SDL_Event event;
 
+	int keyCounter = 0;
+
+	bool keyDown[4] = { false, false, false, false }; /* 0W 1A 2S 3D */
+	bool keyAppliedDown[4] = { false,false,false,false }; /* 0W 1A 2S 3D */
+	bool keyAppliedUp[4] = { true,true,true,true }; /* 0W 1A 2S 3D */
+
 	hWorld world;
 	hBody shipBody;
 
-	float movingSpeed = 20.0f;
+	vec2D velocityChange;
+	float movingSpeed = 100.0f;
 
 private:
 	bool isRunning;
