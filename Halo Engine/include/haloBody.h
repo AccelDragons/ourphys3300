@@ -22,6 +22,9 @@ struct hBody
 	// Declaramos la fuerza aplicada al objeto. 
 	vec2D force;
 
+	// Creamos una función para agregar fuerzas al cuerpo. 
+	void addForce(const vec2D &f);
+
 	// Creamos una función para establecer la masa del objeto. 
 	void setMass(const float &m);
 

@@ -12,6 +12,11 @@ hBody::hBody()
 	invMass = 1.0f; /* 1/mass */
 }
 
+void hBody::addForce(const vec2D& f)
+{
+	force += f;
+}
+
 void hBody::setMass(const float& m)
 {
 	mass = m;
